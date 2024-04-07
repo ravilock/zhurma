@@ -19,6 +19,10 @@ const RENATO_ID = "277619169195982850"
 const RAVI_ID = "99667684139995136"
 const TILTALO_ID = "336231733416427522"
 const LUIZ_ID = "381161936231858176"
+const SAMUEL_ID = "155503310785347584"
+const JVOL_ID = "332528404027015168"
+const VITOR_ID = "362436507543535616"
+const KAUHAN_ID = "939672698928365578"
 
 var buffer = make([][]byte, 0)
 
@@ -152,7 +156,7 @@ func userJoinedChannel(s *discordgo.Session, event *discordgo.VoiceStateUpdate) 
 		return
 	}
 
-	targetID := TILTALO_ID
+	targetID := RENATO_ID
 
 	if event.UserID == targetID {
 		g, err := s.State.Guild(event.GuildID)
@@ -191,7 +195,6 @@ func userJoinedChannel(s *discordgo.Session, event *discordgo.VoiceStateUpdate) 
 			if member != targetID {
 				if err := s.GuildMemberMove(event.GuildID, member, &newChannel); err != nil {
 					slog.Error("Failed to move member", "error", err)
-					return
 				}
 			}
 		}
@@ -221,7 +224,7 @@ func getOtherVoiceChannel(g *discordgo.Guild, channelId string) string {
 
 func createChannelSecret(s *discordgo.Session, g *discordgo.Guild, memberID string) (string, error) {
 	antiUserChannelData := discordgo.GuildChannelCreateData{
-		Name: "Anti-Sexuel",
+		Name: "Anti-Renato",
 		Type: discordgo.ChannelTypeGuildVoice,
 		PermissionOverwrites: []*discordgo.PermissionOverwrite{
 			{
@@ -287,6 +290,7 @@ func loadSound() error {
 
 // playSound plays the current buffer to the provided channel.
 func playSound(s *discordgo.Session, guildID, channelID string) (err error) {
+	return nil // TODO: Remove
 
 	// Join the provided voice channel.
 	vc, err := s.ChannelVoiceJoin(guildID, channelID, false, true)
