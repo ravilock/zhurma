@@ -224,7 +224,7 @@ func getOtherVoiceChannel(g *discordgo.Guild, channelId string) string {
 
 func createChannelSecret(s *discordgo.Session, g *discordgo.Guild, memberID string) (string, error) {
 	antiUserChannelData := discordgo.GuildChannelCreateData{
-		Name: "Anti-Renato",
+		Name: "Anti-Zhurma",
 		Type: discordgo.ChannelTypeGuildVoice,
 		PermissionOverwrites: []*discordgo.PermissionOverwrite{
 			{
